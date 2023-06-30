@@ -1,34 +1,21 @@
 #include "main.h"
-#include <stdlib.h>
-
 /**
- * _strstr - locate a substring
- * @haystack: string
- * @needle: string substring
- * Return: Pointer to beginning of substring, or NULL if not found.
+ * string_toupper - change lowercase to uppercase
+ * @s:string
+ * Return:char
  */
-
-char *_strstr(char *haystack, char *needle)
+char *string_toupper(char *s)
 {
-	int i, j, c;
 
-	i = 0;
-	c = 0;
-	while (haystack[i] != '\0')
+	int i;
+
+i = 0;
+	while (*(s + i))
 	{
-		j = 0;
-		while (needle[j + c] != '\0' && haystack[i + c] != '\0'
-		       && needle[j + c] == haystack[i + c])
-		{
-			if (haystack[i + c] != needle[j + c])
-				break;
-			c++;
-		}
-		if (needle[j + c] == '\0')
-			return (&haystack[i]);
-		j++;
+		if (*(s + i) >= 'a' && *(s + i) <= 'z')
+			*(s + i) -= 'a' - 'A';
 		i++;
 	}
-
-	return (NULL);
+	return (s);
 }
+
