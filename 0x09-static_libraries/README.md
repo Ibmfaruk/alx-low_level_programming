@@ -60,4 +60,4 @@ Bash
 
 More Info
 
-You do not need to learn about dynamic libraries, yet
+You do not need to learn about dynamic libraries, yet.
