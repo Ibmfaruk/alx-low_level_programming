@@ -1,27 +1,42 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "lists.h"
 
 /**
- * add_nodeint - add a new node at the beginning of a `listint_t` list
- * @head: double pointer to head node
- * @n: int value to store in new node
- * Return: Address of new element or NULL if failed
+ * _strlen - function that returns the length of a string.
+ * @s : s is a character
+ * Return: value is i
  */
-listint_t *add_nodeint(listint_t **head, const int n)
+int _strlen(const char *s)
 {
-	listint_t *hold;
-	listint_t *new;
+	int i = 0;
 
-	hold = *head;
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+/**
+ * add_node - add a new node at beginning of a list_t list.
+ * @head: head of a list_t list.
+ * @str: value to insert into element.
+ * Return: the number of nodes.
+ */
+list_t *add_node(list_t **head, const char *str)
+{
+	list_t *add;
+
+	add = malloc(sizeof(list_t));
+	if (add == NULL)
 		return (NULL);
-	new->n = n;
-	*head = new;
+	add->str = strdup(str);
 
-	if (hold == NULL)
-		new->next = NULL;
-	else
-		new->next = hold;
+	add->len = _strlen(str);
+	add->next = *head;
+	*head = add;
 
-	return (new);
+	return (add);
 }
